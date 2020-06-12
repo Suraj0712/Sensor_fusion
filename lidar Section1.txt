@@ -1,0 +1,39 @@
+Sensors
+1. Active (Lidar)
+2. Passive (Camera)
+
+Projects and courses
+1. Lidar -> Obstacle detection in 3D
+2. Camera -> Feature detection and tracking, data fusion between camera and Lidar sensor
+3. Radar -> 
+4. Kalman Filter -> BUilding unscented Kalman filter
+
+Sensor fusion
+-> Part of perception stack
+
+Lidar 
+-> Active sensor
+-> Really good and reliable when it comes to distance measurements
+-> Expensive
+-> Point cloud processing and clustering algorithms required for data processing
+
+Camera
+-> Passive sensor
+-> Returns high resolution data
+-> neural network used for the object detection and tracking
+-> Inexpensive
+
+Radar
+-> Active sensor
+-> Signal processing is required in order to infer the required data from the sensor
+-> Position -> Measured using the wave propagation
+-> Velocity -> doplar effect
+-> returns low resolution data
+-> highly reliable and funcions in many different environments
+-> Radar is inexpensive
+
+Fusion
+-> Merging th edata from multiple sensors to get comprehensive understanding of the environment
+-> We designed the filters based on the prediction update cycle inorder to fuse the data from the different sensors
+-> filter consideration includes determiningth enature of filter like whether it works in continuous or discrete space, how it handles the non linearity
+-> Sensor provides the data in continuous form and generally filters works in discrete form.
