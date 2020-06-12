@@ -1,0 +1,202 @@
+What is Lidar?
+-> Light detection and ranging and its active sensor
+-> Lidar sense the pulse of lasers for very small amount of time ~nanoseconds and then see how much time it takes for laser beam to come back to receiver
+-> Most well known Lidar sensor is by velodyne. it has the stack of laser channels and this rotates around some axis point
+-> The more power to the laser beam means it can detect the farther object however increasing the power also comes with its drawback by becoming harmful to the human eyes
+
+What is Point cloud
+-> Point cloud is the reading we got from the laser reading
+-> .pcd points -> (X,Y,Z,I) where x,y,z is point position wrt lidar frame and i is reflective property
+-> Point cloud library is really come handy when we wants to process the pointcloud data
+
+Segmentation:
+-> Segmentation is a task of labeling the points of the point clouds with some class value
+-> We can process this data using neural network to make some sense
+
+RANSAC:
+-> Random Sampling consensus. it helps us detect the outlier in the data
+-> The linear regression suffer with the outliers so we use RANSAC
+-> so in case of fitting the line we will have the line model and then we will have some tolerance 
+-> will see how many point are coming inside that line_tolerance
+-> will return the model with maximum points
+-> this method is iterative 
+-> it selects the points randomly and fits the line in it
+-> then it measures the inliers and outliers
+-> and return the line with most number of inliers
+
+
+Ground plane is important cause it acts as a reference
+
+
+What is clustering?
+-> clustering is the task of grouping the point which belongs to the same object
+
+
+Ecludian clustering
+-> clustering based on the distance
+-> To do a nearest neighbor search efficiently, you use a KD-Tree data structure which, on average, speeds up your look up time from O(n) to O(log(n))
+-> 
+
+Lidar faces issues when there is rain or sand stone or antthing that limits the visibility
+Also the lidar data is expensive and we need to downsample it in order to use it in real time
+
+
+*=============================================================================================================*
+                                              Implementation overview
+*=============================================================================================================*
+section 1.10
+1. clone https://github.com/udacity/SFND_Lidar_Obstacle_Detection
+2. file that we will be updating 
+	a. environment.cpp
+	b. processPointclouds.cpp
+	c. render.cpp
+	d. lidar.h
+3. Code Structure
+  Top-level CMakeLists.txt
+  Readme
+  src
+    render
+      box.h - this file has the struct definitions for box objects
+      render.h
+      render.cpp - this file, along with the header, define the classes and methods for rendering objects.
+    sensors
+      data - this directory contains pcd data used in the course.
+      lidar.h - has functions using ray casting for creating pcd.
+    environment.cpp - the main file for using pcl viewer and processing and visualizing pcd.
+    processPointClouds.h
+    processPointClouds.cpp - Functions for filtering, segmenting, clustering, boxing, loading, and saving pcd.
+
+section 1.11
+build process for the repo
+1. cd to your project directory
+2. mkdir build
+3. cd build
+4. cmake ..
+5. make
+
+And to run the executable 
+./<name of executable>
+
+section 1.15
+update the simpleHighway function from environment.cpp file 
+1. Create the lidar object with zero slope
+
+section 1.16
+call scan funtion and and observe the rays in simulation
+1. call the scan function which will give you the point cloud
+2. call renderRays function to get the visualization in simulator
+
+section 1.18
+changing the lidar parameters
+1. need to change the values in the constructor of Lidar structure
+
+section 1.19
+visualizing the point cloud
+1. change the flag variabele render scene
+2. call renderPointCloud function
+ 
+*=============================================================================================================*
+section 2.3
+Creating the point procesor object
+1. The process point cloud class contains methods for segmentation, clustering and pcd file handling
+
+section 2.4
+Plane segmentation using PCL
+1. integration of PCL code for segmentation to our code
+
+section 2.5
+separating the point clouds
+1. need to give the results we get from the segmentation to the separate cloud method
+2. needs to create 2 point clouds (for inliers and outliers)
+3. rendering this point clouds in the viewer.	
+
+section 2.7
+implementation of RANSAC
+
+*=============================================================================================================*
+
+section 3.3
+1. upadated the clustering function with PCL documentation code
+2. updated the environment.cpp for render purpose
+
+section 3.6
+KD tree implementation
+1. very good recursie trick to switch betwen x and y dimentions
+2. updated the kd tree.h insert function
+
+section 3.7
+euclidian clustering implementation
+
+section 3.9 
+update the environment.cpp to create bounding boxex
+
+*=============================================================================================================*
+
+section 4.2
+1. Loading the pcd file, we used pcl io and added new function to load the pcd file
+
+section 4.3
+1. Voxel grid filter for the Downsampling
+2. Region of interest selection 
+
+section 4.7
+1. streaming the pcd files
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
