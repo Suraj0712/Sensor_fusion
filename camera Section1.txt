@@ -1,0 +1,34 @@
+Course out line
+1. Camera technology and optics
+2. image processing and computer vision
+3. sensor fusion with lidar
+
+single sensor will be too risky 
+
+why cameras are important
+-> only sensor to interpret 2d information like road sign and lane marking
+-> the driving environment is built by considering the human perception(vie eyes) and camera benefits from it
+-> cameras do have some drabacks like simillar to human vision like performance is highly affected by darkness, adverse weather conditions
+
+computer vision
+-> try to get meaning ful information from the image data
+-> classical computer vision
+1. Feature tracking
+2. segmentation
+3. object recognision
+4. 3d reconstrucion
+
+-> deep learning based computer vision
+1. uses architecture simillar to the human brain
+2. data-> model -> training
+
+
+section 2.1
+Levels of autonomous driving
+
+1 -> https://www.nhtsa.gov/technology-innovation/automated-vehicles-safety
+
+Section 2.2
+
+Sensor selection Criteria
+1. Range: 
